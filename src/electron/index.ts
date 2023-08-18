@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from "path";
 
 require("electron-reload")(__dirname);
@@ -13,7 +13,8 @@ function createWindow() {
             //nodeIntegration: true,
             contextIsolation: true,
         },
-        show: false
+        show: false,
+        minWidth: 450
     });
     mainWindow.loadURL(path.join(__dirname, "www", "index.html"));
 }
