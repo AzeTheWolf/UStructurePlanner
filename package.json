@@ -18,7 +18,7 @@
     "publish:win": "rollup -c && tsc && electron-builder build --win --publish always"
   },
   "build": {
-    "app-id": "usp-app",
+    "appId": "usp-app",
     "directories": {
       "output": "out"
     },
