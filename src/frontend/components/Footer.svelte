@@ -1,7 +1,8 @@
 <script>
     let versions = {node: "-", electron: "-", chrome: "-", app: "-"};
 
-    globalThis.syslink.getElectronData().then(x => {versions = x})
+    window.syslink.getElectronData().then(x => {versions = x});
+
 </script>
 
 <style>
