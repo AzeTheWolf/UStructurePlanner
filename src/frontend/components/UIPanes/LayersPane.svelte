@@ -21,5 +21,5 @@
 </style>
 
 <aside>
-    <header>Layers</header>
+    <header>Groups</header>
 </aside>

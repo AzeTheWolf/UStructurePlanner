@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from "path";
 import * as remote from "./remoteFunctions";
+import appMenu from './appMenu';
 
 require("electron-reload")(__dirname);
 
@@ -19,6 +20,7 @@ function createWindow() {
         minWidth: 450
     });
     mainWindow.loadURL(path.join(__dirname, "www", "index.html"));
+    mainWindow.setMenu(appMenu)
 }
 
 app.on('ready', () => {
