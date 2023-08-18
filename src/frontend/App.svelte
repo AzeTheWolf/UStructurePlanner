@@ -1,6 +1,4 @@
 <script lang="ts">
-	export const name = "App";
-
 	import ToolbarPane from "./components/UIPanes/ToolbarPane.svelte";
 	import LayersPane from "./components/UIPanes/LayersPane.svelte";
 	import PropertiesPane from "./components/UIPanes/PropertiesPane.svelte";

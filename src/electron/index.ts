@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from "path";
+import * as remote from "./remoteFunctions";
 
 require("electron-reload")(__dirname);
 
@@ -12,6 +13,7 @@ function createWindow() {
         webPreferences: {
             //nodeIntegration: true,
             contextIsolation: true,
+            preload: path.join(__dirname, "preload.js")
         },
         show: false,
         minWidth: 450
@@ -20,7 +22,8 @@ function createWindow() {
 }
 
 app.on('ready', () => {
-    app.name = "Structure Creator";
+    ipcMain.handle('system:getElectronInfo', remote.getSystemInfo);
+
     createWindow();
     mainWindow.maximize();
     mainWindow.show();
