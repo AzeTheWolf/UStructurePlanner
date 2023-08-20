@@ -32,6 +32,9 @@ export default Menu.buildFromTemplate([
                 label: "Reload UI",
                 role: "reload",
                 accelerator: "Ctrl+Shift+R"
+            },
+            {
+                role: "toggleDevTools"
             }
         ]
     }

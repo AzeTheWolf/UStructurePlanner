@@ -3,6 +3,7 @@
 	import LayersPane from "./components/UIPanes/LayersPane.svelte";
 	import PropertiesPane from "./components/UIPanes/PropertiesPane.svelte";
 	import Footer from "./components/Footer.svelte";
+	import WorkspacePane from "./components/UIPanes/WorkspacePane.svelte";
 </script>
 
 <style>
@@ -20,6 +21,7 @@
 	<ToolbarPane />
 	<LayersPane />
 	<PropertiesPane />
+	<WorkspacePane />
 
 	<Footer />
 </div>

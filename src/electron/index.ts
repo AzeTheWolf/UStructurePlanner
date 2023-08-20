@@ -12,7 +12,7 @@ function createWindow() {
         width: 1280,
         height: 720,
         webPreferences: {
-            //nodeIntegration: true,
+            nodeIntegration: false,
             contextIsolation: true,
             preload: path.join(__dirname, "preload.js")
         },
@@ -20,7 +20,7 @@ function createWindow() {
         minWidth: 450
     });
     mainWindow.loadURL(path.join(__dirname, "www", "index.html"));
-    mainWindow.setMenu(appMenu)
+    mainWindow.setMenu(appMenu);
 }
 
 app.on('ready', () => {
