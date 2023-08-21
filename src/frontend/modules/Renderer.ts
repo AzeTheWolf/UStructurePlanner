@@ -2,6 +2,8 @@ import * as Three from 'three';
 
 export class Renderer 
 {
+    MAX_ZOOM_OUT = 1000;
+
     renderer: Three.WebGLRenderer = new Three.WebGLRenderer();
     scene = new Three.Scene();
     cameraBoom = new Three.Group();
@@ -44,6 +46,18 @@ export class Renderer
     {
         this.cameraBoom.rotateY(-x * Math.PI / 360);
         this.cameraBoom.rotateX(-y * Math.PI / 360);
+        this._update();
+    }
+
+    zoom(x: number): void
+    {
+        if (x == 0) return;
+
+        this.camera.position.z += x / 10;
+
+        if (this.camera.position.z < 1) this.camera.position.z = 1;
+        if (this.camera.position.z > this.MAX_ZOOM_OUT) this.camera.position.z = this.MAX_ZOOM_OUT;
+
         this._update();
     }
 
