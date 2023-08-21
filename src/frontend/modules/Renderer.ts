@@ -2,17 +2,20 @@ import * as Three from 'three';
 
 export class Renderer 
 {
-    renderer: Three.WebGLRenderer = null;
+    renderer: Three.WebGLRenderer = new Three.WebGLRenderer();
     scene = new Three.Scene();
+    cameraBoom = new Three.Group();
     camera: Three.PerspectiveCamera = undefined;
     hostElement: HTMLElement;
 
     constructor(element: HTMLElement)
     {
-        this.renderer = new Three.WebGLRenderer()
         this.hostElement = element;
         this.camera = new Three.PerspectiveCamera(75, element.clientWidth / element.clientHeight, .1, 1000)
         this.renderer.setSize(element.clientWidth, element.clientHeight);
+
+        this.cameraBoom.add(this.camera);
+        this.camera.position.set(0, 0, 10);
 
         this.hostElement.appendChild(this.renderer.domElement);
 
@@ -20,13 +23,12 @@ export class Renderer
         const material = new Three.MeshBasicMaterial({ color: 0x00ff00 });
         const cube = new Three.Mesh(geometry, material);
         this.scene.add(cube);
+        this.scene.add(this.cameraBoom);
 
-        this.camera.position.z = 5;
-        this.renderer.render(this.scene, this.camera);
-
+        this._update();
     }
 
-    resizeRenderer()
+    resizeRenderer(): void
     {
         const w = window.innerWidth - 340;
 
@@ -35,6 +37,18 @@ export class Renderer
 
         this.renderer.setSize(w, this.hostElement.clientHeight);
 
+        this._update()
+    }
+    
+    rotateCamera(x: number, y: number): void
+    {
+        this.cameraBoom.rotateY(-x * Math.PI / 360);
+        this.cameraBoom.rotateX(-y * Math.PI / 360);
+        this._update();
+    }
+
+    protected _update(): void
+    {
         this.renderer.render(this.scene, this.camera);
     }
 }

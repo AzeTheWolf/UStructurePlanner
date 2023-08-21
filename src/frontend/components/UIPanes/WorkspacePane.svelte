@@ -10,9 +10,10 @@
         window.onresize = () => { rendererModule.resizeRenderer(); };
     });
 
-    function mousedown(ev: MouseEvent): void
+    function rotateViewport(ev: MouseEvent): void
     {
-        console.log(ev);
+        if ((ev.buttons & 1) === 0) return;
+        rendererModule.rotateCamera(ev.movementX, ev.movementY);
     }
 </script>
 
@@ -23,5 +24,5 @@
     }
 </style>
 
-<main id="display" bind:this={hostElement}>
+<main id="display" bind:this={hostElement} on:mousemove={rotateViewport}>
 </main>
