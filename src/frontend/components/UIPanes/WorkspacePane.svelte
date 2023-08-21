@@ -1,5 +1,18 @@
 <script lang="ts">
-    import * as THREE from 'three';
+    import { setContext, onMount } from "svelte";
+    import { Renderer } from "../../modules/Renderer";
+
+    let rendererModule: Renderer;
+    let hostElement: HTMLElement;
+
+    onMount(() => {
+        rendererModule = new Renderer(hostElement);
+    });
+
+    function mousedown(ev: MouseEvent): void
+    {
+        console.log(ev);
+    }
 </script>
 
 <style>
@@ -9,6 +22,5 @@
     }
 </style>
 
-<main>
-    <div id="display"></div>
+<main id="display" bind:this={hostElement}>
 </main>
