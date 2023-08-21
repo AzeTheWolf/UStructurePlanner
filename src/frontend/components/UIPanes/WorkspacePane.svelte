@@ -7,6 +7,7 @@
 
     onMount(() => {
         rendererModule = new Renderer(hostElement);
+        window.onresize = () => { rendererModule.resizeRenderer(); };
     });
 
     function mousedown(ev: MouseEvent): void
