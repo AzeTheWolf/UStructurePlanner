@@ -1,5 +1,6 @@
 <script lang="ts">
     import ToolTile from "../ToolTile.svelte";
+    import { TOOL } from "../../stores/activeTool.store";
 </script>
 
 <style>
@@ -17,8 +18,8 @@
 </style>
 
 <aside>
-    <ToolTile name="Rotate view horizontaly" src="icons/rotateHorizontal.png"/>
-    <ToolTile name="Rotate view vertically" src="icons/rotatevertical.png"/>
-    <ToolTile name="Rotate view" src="icons/rotateBoth.png"/>
-    <ToolTile name="Zoom" src="icons/zoom.png"/>
+    <ToolTile name="Rotate view" src="icons/rotateBoth.png" toolId={TOOL.ROTATE_VIEW}/>
+    <ToolTile name="Rotate view horizontaly" src="icons/rotateHorizontal.png" toolId={TOOL.ROTATE_VIEW_HORIZONTAL}/>
+    <ToolTile name="Rotate view vertically" src="icons/rotatevertical.png" toolId={TOOL.ROTATE_VIEW_VERTICAL}/>
+    <ToolTile name="Zoom" src="icons/zoom.png" toolId={TOOL.ZOOM}/>
 </aside>

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { setContext, onMount } from "svelte";
     import { Renderer } from "../../modules/Renderer";
+    import { activeTool, TOOL } from "../../stores/activeTool.store";
 
     let rendererModule: Renderer;
     let hostElement: HTMLElement;
@@ -20,7 +21,9 @@
         }
         else
         {
-            rendererModule.rotateCamera(ev.movementX, ev.movementY);
+            let xMov = $activeTool == TOOL.ROTATE_VIEW || $activeTool == TOOL.ROTATE_VIEW_HORIZONTAL ? ev.movementX : 0;
+            let yMov = $activeTool == TOOL.ROTATE_VIEW || $activeTool == TOOL.ROTATE_VIEW_VERTICAL ? ev.movementY : 0;
+            rendererModule.rotateCamera(xMov, yMov);
         }
     }
 </script>
