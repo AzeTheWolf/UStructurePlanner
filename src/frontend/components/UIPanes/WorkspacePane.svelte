@@ -15,16 +15,15 @@
     {
         if ((ev.buttons & 1) === 0) return;
 
-        if (ev.ctrlKey)
+        if (ev.ctrlKey || $activeTool === TOOL.ZOOM)
         {
             rendererModule.zoom(ev.movementY);
+            return
         }
-        else
-        {
-            let xMov = $activeTool == TOOL.ROTATE_VIEW || $activeTool == TOOL.ROTATE_VIEW_HORIZONTAL ? ev.movementX : 0;
-            let yMov = $activeTool == TOOL.ROTATE_VIEW || $activeTool == TOOL.ROTATE_VIEW_VERTICAL ? ev.movementY : 0;
-            rendererModule.rotateCamera(xMov, yMov);
-        }
+
+        let xMov = $activeTool === TOOL.ROTATE_VIEW || $activeTool === TOOL.ROTATE_VIEW_HORIZONTAL ? ev.movementX : 0;
+        let yMov = $activeTool === TOOL.ROTATE_VIEW || $activeTool === TOOL.ROTATE_VIEW_VERTICAL ? ev.movementY : 0;
+        rendererModule.rotateCamera(xMov, yMov);
     }
 </script>
 
