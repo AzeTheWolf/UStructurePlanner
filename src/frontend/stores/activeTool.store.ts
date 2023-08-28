@@ -9,3 +9,4 @@ export class TOOL
 }
 
 export const activeTool = writable(0);
+export const displayTool = writable(null);

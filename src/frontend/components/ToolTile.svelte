@@ -1,9 +1,11 @@
 <script lang="ts">
-    import { activeTool } from "../stores/activeTool.store";
+    import { activeTool, displayTool } from "../stores/activeTool.store";
 
     export let src: string;
     export let name: string;
     export let toolId: number;
+
+    $: active = $displayTool === null ? $activeTool === toolId : $displayTool === toolId
 
     function handleClickAccess(ev: KeyboardEvent)
     {
@@ -43,6 +45,6 @@
     }
 </style>
 
-<div role="button" tabindex="0" class:active={$activeTool == toolId} on:click={handleClick} on:keypress={handleClickAccess}>
+<div role="button" tabindex="0" class:active on:click={handleClick} on:keypress={handleClickAccess}>
     <img {src} alt={name + " tool"}>
 </div>

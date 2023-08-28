@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { setContext, onMount } from "svelte";
+    import { onMount } from "svelte";
     import { Renderer } from "../../modules/Renderer";
     import { activeTool, TOOL } from "../../stores/activeTool.store";
 
