@@ -16,7 +16,8 @@ export class Renderer
     cameraBoom = new Three.Group(); // Helper group for rotating camera around origin
     camera: Three.PerspectiveCamera = undefined; // main camera
 
-    floorGrid = new Three.GridHelper(1000, 1000);
+    floorGrid = new Three.GridHelper(2000, 2000); // floor grid
+    axes = [new Three.AxesHelper(1000), new Three.AxesHelper(-1000)];
 
     hostElement: HTMLElement; // DOM element in which canvas is placed
 
@@ -38,6 +39,10 @@ export class Renderer
 
         this.scene.add(this.cameraBoom); // put camera in the scene
         this.scene.add(this.floorGrid) // put grid in the scene
+        this.scene.add(this.axes[0]) // put grid in the scene
+        this.scene.add(this.axes[1]) // put grid in the scene
+
+        this.floorGrid.position.set(.5, 0, .5);
 
         this._update(); // render
     }
@@ -69,8 +74,8 @@ export class Renderer
     rotateCamera(x: number, y: number): void
     {
         // Convert to radians and scale down
-        this.cameraBoom.rotateY(-x * Math.PI / 360);
-        this.cameraBoom.rotateX(-y * Math.PI / 360);
+        this.cameraBoom.rotateOnWorldAxis(new Three.Vector3(0, -1, 0), x * Math.PI / 360);
+        this.cameraBoom.rotateOnAxis(new Three.Vector3(-1, 0, 0), y * Math.PI / 360);
 
         this._update();
     }
