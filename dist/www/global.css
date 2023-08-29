@@ -16,13 +16,28 @@
 	box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+	width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #777;
+	border-radius: 2px;
+}
+*::-webkit-scrollbar-thumb:hover {
+	background-color: #7e7e7e;
+}
+
 :root {
-	--colBg: #282828;
-	--colBgActive: #444;
-	--colBgFocus: #484848;
-	--colHeader: #4c4c4c;
-	--borderPane: 2px solid #4c4c4c;
+	--colBg: #282828; /*Used for pane background*/
+	--colPaneElement: #363636; /*Used for layer tile background*/
+	--colBgActive: #444; /*Used for active tool tiles*/
+	--colBgFocus: #484848 /*Used for hover state of hoverable elements*/;
+	--colHeader: #4c4c4c /*Used in pane headers*/;
 	--colText: #eee;
+
+	--borderPane: 2px solid #4c4c4c;
+	--borderDark: 1px solid #242424;
 }
 
 body {
