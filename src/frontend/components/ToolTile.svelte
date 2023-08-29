@@ -30,11 +30,11 @@
     }
 
     div:hover, div.active:hover {
-        background-color: #484848;
+        background-color: var(--colBgFocus);
     }
 
     div.active {
-        background-color: #444;
+        background-color: var(--colBgActive);
     }
 
     img {

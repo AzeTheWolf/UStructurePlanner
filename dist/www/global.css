@@ -17,9 +17,11 @@
 }
 
 :root {
-	--colBg: #333;
-	--colHeader: #444;
-	--borderPane: 2px solid #444;
+	--colBg: #282828;
+	--colBgActive: #444;
+	--colBgFocus: #484848;
+	--colHeader: #4c4c4c;
+	--borderPane: 2px solid #4c4c4c;
 	--colText: #eee;
 }
 
