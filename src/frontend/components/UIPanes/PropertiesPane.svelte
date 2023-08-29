@@ -16,7 +16,7 @@
         padding: 5px;
         font-size: 12px;
         font-weight: 700;
-        background-color: #444;
+        background-color: var(--colorHeader);
     }
 </style>
 

@@ -1,3 +1,7 @@
+<script lang="ts">
+    import Layer from "../Layer.svelte";
+</script>
+
 <style>
     aside {
         background-color: var(--colBg);
@@ -16,10 +20,11 @@
         padding: 5px;
         font-size: 12px;
         font-weight: 700;
-        background-color: #444;
+        background-color: var(--colHeader);
     }
 </style>
 
 <aside>
     <header>Groups</header>
+    <Layer />
 </aside>
