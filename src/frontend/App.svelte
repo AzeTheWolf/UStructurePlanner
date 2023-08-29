@@ -13,7 +13,7 @@
 
 		display: grid;
 		grid-template-columns: 40px 100fr 300px;
-		grid-template-rows: 50fr 50fr 20px;
+		grid-template-rows: calc(50vh - 20px) calc(50vh - 20px) 20px; /*Using fr makes elements grow*/
 	}
 </style>
 

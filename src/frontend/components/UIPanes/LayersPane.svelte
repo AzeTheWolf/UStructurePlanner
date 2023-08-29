@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Layer from "../Layer.svelte";
 </script>
 
 <style>
@@ -8,6 +7,13 @@
         border-top: var(--borderPane);
         grid-column: 3;
         grid-row: 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content {
+        overflow-y: scroll;
+
     }
 
     /*
@@ -26,5 +32,6 @@
 
 <aside>
     <header>Groups</header>
-    <Layer />
+    <div class="content">
+    </div>
 </aside>
