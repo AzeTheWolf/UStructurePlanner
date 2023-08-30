@@ -1,4 +1,11 @@
 <script lang="ts">
+    import { LayerStore } from "../../stores/layers.store";
+    import Layer from "../Layer.svelte";
+
+    function newLayer()
+    {
+        LayerStore.addLayer();
+    }
 </script>
 
 <style>
@@ -13,7 +20,7 @@
 
     .content {
         overflow-y: scroll;
-
+        flex-grow: 1;
     }
 
     /*
@@ -33,5 +40,11 @@
 <aside>
     <header>Groups</header>
     <div class="content">
+        {#each $LayerStore as layer}
+            <Layer label={layer.name}/>
+        {/each}
+    </div>
+    <div class="menu">
+        <button class="newLayer" on:click={newLayer}>N</button>
     </div>
 </aside>

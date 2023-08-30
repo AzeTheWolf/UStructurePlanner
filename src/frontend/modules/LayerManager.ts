@@ -1,7 +1,5 @@
 import { writable } from "svelte/store";
 
-import * as crypto from 'crypto';
-
 export class Layer
 {
     id: number;
@@ -15,7 +13,7 @@ export class Layer
     }
 }
 
-const {subscribe, set, update} = writable<Layer[]>([]);
+const {subscribe, update} = writable<Layer[]>([]);
 
 export class LayerManager
 {
@@ -26,14 +24,15 @@ export class LayerManager
         update(n => {
             if (n.length > 512) return n;
 
-            let uid = crypto.randomInt(2 ** 9);
+            let uid = window.syslink.getRandom10bitID();
             while (typeof n.find(x => x.id === uid) !== 'undefined')
             {
-                uid = crypto.randomInt(2 ** 9);
+                uid = window.syslink.getRandom10bitID();
             }
 
 
-            n.push(new Layer(uid, ""));
+            n.push(new Layer(uid, `Group ${n.length + 1}`));
+            console.log(n);
 
             return n;
         });
