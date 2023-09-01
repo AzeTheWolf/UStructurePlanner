@@ -35,5 +35,15 @@ export class LayerManager
         });
     }
 
+    setName(id: number, name: string)
+    {
+        update(n => {
+            
+            n.get(id).name = name;
+
+            return n;
+        });
+    }
+
 
 }

@@ -1,11 +1,20 @@
 <script lang="ts">
+    import { LayerStore } from "../stores/layers.store";
+    
     let editing = false;
     export let label = "Layer 1";
+    export let uid: number;
 
     function focus(element: HTMLInputElement)
     {
         element.focus();
         element.select();
+    }
+
+    function blur()
+    {
+        editing = false;
+        LayerStore.setName(uid, label);
     }
 </script>
 
@@ -59,7 +68,7 @@
     </div>
     <div class="layerLabel">
         {#if editing}
-            <input type="text" bind:value={label} on:blur={() => {editing = false}} use:focus/>
+            <input type="text" bind:value={label} on:blur={blur} use:focus/>
         {:else}
             <span on:dblclick={() => {editing = true}}>{label}</span>
         {/if}

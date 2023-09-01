@@ -40,8 +40,8 @@
 <aside>
     <header>Groups</header>
     <div class="content">
-        {#each Array.from($LayerStore.values()) as layer}
-            <Layer label={layer.name}/>
+        {#each Array.from($LayerStore.entries()) as layer}
+            <Layer uid={layer[0]} label={layer[1].name}/>
         {/each}
     </div>
     <div class="menu">
