@@ -2,39 +2,38 @@ import { writable } from "svelte/store";
 
 export class Layer
 {
-    id: number;
     name: string;
     contents: any[];
 
-    constructor(id: number, name: string)
+    constructor(name: string)
     {
-        this.id = id;
         this.name = name;
     }
 }
 
-const {subscribe, update} = writable<Layer[]>([]);
+const {subscribe, update} = writable<Map<number, Layer>>(new Map);
 
 export class LayerManager
 {
+
     subscribe = subscribe;
 
     addLayer()
     {
         update(n => {
-            if (n.length > 512) return n;
+            if (n.size > 512) return n;
 
             let uid = window.syslink.getRandom10bitID();
-            while (typeof n.find(x => x.id === uid) !== 'undefined')
+            while (typeof Array.from(n.keys()).find(x => x === uid) !== 'undefined')
             {
                 uid = window.syslink.getRandom10bitID();
             }
 
-
-            n.push(new Layer(uid, `Group ${n.length + 1}`));
-            console.log(n);
+            n.set(uid, new Layer(`Group ${n.size + 1}`));
 
             return n;
         });
     }
+
+
 }

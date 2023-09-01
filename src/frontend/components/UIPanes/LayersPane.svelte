@@ -40,7 +40,7 @@
 <aside>
     <header>Groups</header>
     <div class="content">
-        {#each $LayerStore as layer}
+        {#each Array.from($LayerStore.values()) as layer}
             <Layer label={layer.name}/>
         {/each}
     </div>
